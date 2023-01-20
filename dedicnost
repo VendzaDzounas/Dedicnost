@@ -1,0 +1,68 @@
+using System;
+
+namespace Dědičnost
+{
+    class Zvire
+    {
+        public string jmeno;
+        public string typ_chovu;
+        public Zvire(string Jmeno, string Typ_Chovu)
+        {
+            jmeno = Jmeno;
+            typ_chovu = Typ_Chovu;
+        }
+    }
+    class Kocka : Zvire
+    {
+        public string barva;
+        public Kocka(string Barva, string Jmeno, string Typ_Chovu):base(Jmeno,Typ_Chovu)
+        {
+            barva = Barva;
+        }
+        public void Meow()
+        {
+            Console.WriteLine("Meow");
+        }
+    }
+    class Ovce : Zvire
+    {
+        public double delka;
+        public Ovce(double Delka, string Jmeno, string Typ_Chovu):base(Jmeno, Typ_Chovu)
+        {
+            delka = Delka;
+        }
+        public void Bigger()
+        {
+            delka += 1;
+        }
+    }
+    class Krava : Zvire
+    {
+        public string mleko;
+        public Krava(string Mleko, string Jmeno, string Typ_Chovu) : base(Jmeno, Typ_Chovu)
+        {
+            mleko = Mleko;
+        }
+        public void Vypis()
+        {
+            Console.WriteLine("Mléko: " + mleko);
+            Console.WriteLine("Jméno: " + jmeno);
+            Console.WriteLine("Typ Chovu: " + typ_chovu);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Krava krava1 = new Krava("Plnotučné", "Karla", "mléko");
+            krava1.Vypis();
+            Ovce ovce1 = new Ovce(10, "Bětka", "Vlna");
+            Console.WriteLine(ovce1.delka);
+            ovce1.Bigger();
+            Console.WriteLine(ovce1.delka);
+            Kocka kocka1 = new Kocka("černá", "Kocur", "Mazlíček");
+            kocka1.Meow();
+
+        }
+    }
+}
